@@ -110,4 +110,11 @@ def main():
 
             else:
                 print("Medicamento nao encontrado.\n")
+        elif opcao == "0":
+            print("Saindo do sistema. Ate logo!")
+            break
 
+        else:
+            print("Opcao invalida. Tente novamente.\n")
+        if __name__ == "__main__":
+         main()
