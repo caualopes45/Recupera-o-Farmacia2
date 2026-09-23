@@ -58,3 +58,39 @@ def exibir_menu():
     print("3. Buscar medicamento")
     print("0. Sair")
     print("-" * 40)
+def main():
+    medicamentos = carregar_medicamentos()
+
+    while True:
+        exibir_menu()
+
+        opcao = input("Escolha uma opcao: ").strip()
+
+        if opcao == "1":
+            print("\n--- Cadastrar Medicamento ---")
+
+            nome = input("Nome      : ").strip()
+            categoria = input("Categoria : ").strip()
+            quantidade_str = input("Quantidade: ").strip()
+
+            if not quantidade_str.isdigit():
+                print("Quantidade invalida! Digite apenas numeros.\n")
+                continue
+
+            if nome and categoria:
+                sucesso = cadastrar_medicamento(
+                    medicamentos,
+                    nome,
+                    categoria,
+                    int(quantidade_str)
+                )
+
+                if sucesso:
+                    salvar_medicamentos(medicamentos)
+                    print("Medicamento cadastrado com sucesso!\n")
+                else:
+                    print("Erro: ja existe um medicamento com esse nome.\n")
+
+            else:
+                print("Nome e categoria sao obrigatorios.\n")
+
