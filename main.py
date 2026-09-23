@@ -93,4 +93,21 @@ def main():
 
             else:
                 print("Nome e categoria sao obrigatorios.\n")
+        elif opcao == "2":
+            print("\n--- Lista de Medicamentos ---")
+            listar_medicamentos(medicamentos)
+
+        elif opcao == "3":
+            print("\n--- Buscar Medicamento ---")
+
+            nome_buscado = input("Digite o nome do medicamento: ").strip()
+
+            resultado = buscar_medicamento(medicamentos, nome_buscado)
+
+            if resultado:
+                print()
+                exibir_medicamento(resultado)
+
+            else:
+                print("Medicamento nao encontrado.\n")
 
