@@ -18,3 +18,8 @@ def carregar_medicamentos():
             medicamentos.append(linha)
 
     return medicamentos
+def salvar_medicamentos(medicamentos):
+    with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
+        escritor.writeheader()
+        escritor.writerows(medicamentos)
