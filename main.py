@@ -23,3 +23,8 @@ def salvar_medicamentos(medicamentos):
         escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
         escritor.writeheader()
         escritor.writerows(medicamentos)
+def salvar_medicamentos(medicamentos):
+    with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
+        escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
+        escritor.writeheader()
+        escritor.writerows(medicamentos)
