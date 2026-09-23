@@ -23,7 +23,12 @@ def carregar_medicamentos():
 
 # Salva os medicamentos no arquivo para não perder os dados
 def salvar_medicamentos(medicamentos):
-    with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
+    caminho = os.path.abspath(ARQUIVO_CSV)
+
+    print("\nSALVANDO CSV...")
+    print("Local:", caminho)
+
+    with open(caminho, "w", newline="", encoding="utf-8") as arquivo:
         escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
         escritor.writeheader()
         escritor.writerows(medicamentos)
