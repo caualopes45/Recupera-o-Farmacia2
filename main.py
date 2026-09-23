@@ -49,3 +49,12 @@ def listar_medicamentos(medicamentos):
     for i, med in enumerate(medicamentos, start=1):
         print(f"[{i}]")
         exibir_medicamento(med)
+def exibir_menu():
+    print("=" * 40)
+    print("   SISTEMA DE CADASTRO DE MEDICAMENTOS")
+    print("=" * 40)
+    print("1. Cadastrar medicamento")
+    print("2. Listar medicamentos")
+    print("3. Buscar medicamento")
+    print("0. Sair")
+    print("-" * 40)
