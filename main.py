@@ -4,6 +4,8 @@ import os
 ARQUIVO_CSV = "medicamentos.csv"
 
 CAMPOS = ["nome", "categoria", "quantidade"]
+
+
 def carregar_medicamentos():
     medicamentos = []
 
@@ -18,22 +20,38 @@ def carregar_medicamentos():
             medicamentos.append(linha)
 
     return medicamentos
+
+
 def salvar_medicamentos(medicamentos):
     with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
         escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
         escritor.writeheader()
         escritor.writerows(medicamentos)
-def salvar_medicamentos(medicamentos):
-    with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
-        escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
-        escritor.writeheader()
-        escritor.writerows(medicamentos)
+
+
+def cadastrar_medicamento(medicamentos, nome, categoria, quantidade):
+    for med in medicamentos:
+        if med["nome"].lower() == nome.lower():
+            return False
+
+    novo_medicamento = {
+        "nome": nome,
+        "categoria": categoria,
+        "quantidade": quantidade
+    }
+
+    medicamentos.append(novo_medicamento)
+    return True
+
+
 def buscar_medicamento(medicamentos, nome_buscado):
     for med in medicamentos:
         if med["nome"].lower() == nome_buscado.lower():
             return med
 
     return None
+
+
 def exibir_medicamento(med):
     print(f"  Nome       : {med['nome']}")
     print(f"  Categoria  : {med['categoria']}")
@@ -49,6 +67,8 @@ def listar_medicamentos(medicamentos):
     for i, med in enumerate(medicamentos, start=1):
         print(f"[{i}]")
         exibir_medicamento(med)
+
+
 def exibir_menu():
     print("=" * 40)
     print("   SISTEMA DE CADASTRO DE MEDICAMENTOS")
@@ -58,6 +78,8 @@ def exibir_menu():
     print("3. Buscar medicamento")
     print("0. Sair")
     print("-" * 40)
+
+
 def main():
     medicamentos = carregar_medicamentos()
 
@@ -93,6 +115,7 @@ def main():
 
             else:
                 print("Nome e categoria sao obrigatorios.\n")
+
         elif opcao == "2":
             print("\n--- Lista de Medicamentos ---")
             listar_medicamentos(medicamentos)
@@ -107,14 +130,16 @@ def main():
             if resultado:
                 print()
                 exibir_medicamento(resultado)
-
             else:
                 print("Medicamento nao encontrado.\n")
+
         elif opcao == "0":
             print("Saindo do sistema. Ate logo!")
             break
 
         else:
             print("Opcao invalida. Tente novamente.\n")
-    if __name__ == "__main__":
-        main()
+
+
+if __name__ == "__main__":
+    main()
