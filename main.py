@@ -5,7 +5,7 @@ ARQUIVO_CSV = "medicamentos.csv"
 
 CAMPOS = ["nome", "categoria", "quantidade"]
 
-
+# Carrega os medicamentos que já foram salvos
 def carregar_medicamentos():
     medicamentos = []
 
@@ -21,14 +21,14 @@ def carregar_medicamentos():
 
     return medicamentos
 
-
+# Salva os medicamentos no arquivo para não perder os dados
 def salvar_medicamentos(medicamentos):
     with open(ARQUIVO_CSV, "w", newline="", encoding="utf-8") as arquivo:
         escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
         escritor.writeheader()
         escritor.writerows(medicamentos)
 
-
+# Verifica se o medicamento já existe antes de cadastrar
 def cadastrar_medicamento(medicamentos, nome, categoria, quantidade):
     for med in medicamentos:
         if med["nome"].lower() == nome.lower():
@@ -43,7 +43,7 @@ def cadastrar_medicamento(medicamentos, nome, categoria, quantidade):
     medicamentos.append(novo_medicamento)
     return True
 
-
+# Procura um medicamento pelo nome informado
 def buscar_medicamento(medicamentos, nome_buscado):
     for med in medicamentos:
         if med["nome"].lower() == nome_buscado.lower():
@@ -79,7 +79,7 @@ def exibir_menu():
     print("0. Sair")
     print("-" * 40)
 
-
+# Mostra o menu e mantém o programa funcionando até escolher sair
 def main():
     medicamentos = carregar_medicamentos()
 
