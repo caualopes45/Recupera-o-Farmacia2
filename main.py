@@ -116,5 +116,5 @@ def main():
 
         else:
             print("Opcao invalida. Tente novamente.\n")
-        if __name__ == "__main__":
-         main()
+    if __name__ == "__main__":
+        main()
