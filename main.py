@@ -28,3 +28,9 @@ def salvar_medicamentos(medicamentos):
         escritor = csv.DictWriter(arquivo, fieldnames=CAMPOS)
         escritor.writeheader()
         escritor.writerows(medicamentos)
+def buscar_medicamento(medicamentos, nome_buscado):
+    for med in medicamentos:
+        if med["nome"].lower() == nome_buscado.lower():
+            return med
+
+    return None
