@@ -34,3 +34,18 @@ def buscar_medicamento(medicamentos, nome_buscado):
             return med
 
     return None
+def exibir_medicamento(med):
+    print(f"  Nome       : {med['nome']}")
+    print(f"  Categoria  : {med['categoria']}")
+    print(f"  Quantidade : {med['quantidade']}")
+    print()
+
+
+def listar_medicamentos(medicamentos):
+    if not medicamentos:
+        print("Nenhum medicamento cadastrado.\n")
+        return
+
+    for i, med in enumerate(medicamentos, start=1):
+        print(f"[{i}]")
+        exibir_medicamento(med)
